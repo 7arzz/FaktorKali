@@ -1,4 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 import produk1 from '../assets/product/produk1.jpg';
 import produk2 from '../assets/product/produk2.jpg';
 import produk3 from '../assets/product/produk3.jpg';
