@@ -19,29 +19,33 @@ const Hero = () => {
           .to(subRef.current, { opacity: 1, y: 0, duration: 1 }, "-=0.8")
           .to(ctaRef.current, { opacity: 1, y: 0, duration: 1 }, "-=0.8");
 
-        // Parallax Effect
-        gsap.to(markRef.current, {
-            y: 400,
-            scrollTrigger: {
-                trigger: heroRef.current,
-                start: "top top",
-                end: "bottom top",
-                scrub: 1
-            }
-        });
+        // Parallax Effect — desktop only to prevent mobile jank
+        const mm = gsap.matchMedia();
 
-        gsap.to(titleRef.current, {
-            y: 200,
-            scrollTrigger: {
-                trigger: heroRef.current,
-                start: "top top",
-                end: "bottom top",
-                scrub: 1
-            }
+        mm.add("(min-width: 769px)", () => {
+            gsap.to(markRef.current, {
+                y: 300,
+                scrollTrigger: {
+                    trigger: heroRef.current,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: 1
+                }
+            });
+
+            gsap.to(titleRef.current, {
+                y: 120,
+                scrollTrigger: {
+                    trigger: heroRef.current,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: 1
+                }
+            });
         });
 
         return () => {
-            ScrollTrigger.getAll().forEach(t => t.kill());
+            mm.revert();
         };
     }, []);
 
