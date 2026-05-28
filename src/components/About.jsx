@@ -39,7 +39,6 @@ const About = () => {
     }, []);
 
     const statItems = [
-        { label: 'Instagram Posts', value: '911' },
         { label: 'Loyal Followers', value: '3,805' },
         { label: 'Happy Clients', value: '100+' }
     ];
