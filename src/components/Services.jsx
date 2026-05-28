@@ -1,33 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Utensils, Package, Sparkles, Instagram as InstagramIcon } from 'lucide-react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
-    const sectionRef = useRef(null);
-    const cardsRef = useRef([]);
-
-    useEffect(() => {
-        cardsRef.current.forEach((el, i) => {
-            gsap.fromTo(el, 
-                { y: 50 * (i + 1) },
-                {
-                    y: -50 * (i + 1),
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: 1
-                    }
-                }
-            );
-        });
-    }, []);
-
     return (
-        <section className="services" id="services" ref={sectionRef}>
+        <section className="services" id="services">
             <div className="section-header reveal">
                 <p>What We Offer</p>
                 <h2>Our Specialized Expertise</h2>
@@ -39,7 +15,7 @@ const Services = () => {
                     { icon: <Sparkles size={40} />, title: 'Fashion Editorial', text: 'Magazine-quality fashion photography that highlights texture, movement, and the identity of your brand.', price: '$150 - $500' },
                     { icon: <InstagramIcon size={40} />, title: 'Social Media Mgmt', text: 'End-to-end visual content strategy and management to keep your social feeds aesthetically consistent.', price: '$200 - $800' }
                 ].map((s, i) => (
-                    <div className="service-card reveal" key={i} ref={el => cardsRef.current[i] = el}>
+                    <div className="service-card reveal" key={i}>
                         <div className="service-icon">{s.icon}</div>
                         <h3>{s.title}</h3>
                         <p>{s.text}</p>
