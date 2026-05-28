@@ -707,6 +707,11 @@ nav.sticky {
     transition: var(--transition);
 }
 
+.form-group option {
+    background-color: var(--black);
+    color: white;
+}
+
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     border-color: var(--crimson);
 }
